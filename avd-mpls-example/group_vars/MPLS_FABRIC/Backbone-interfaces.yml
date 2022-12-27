@@ -1,0 +1,105 @@
+---
+
+# Backone Interfaces
+
+backbone_interfaces:
+  #p2p_links_ip_pools:
+    #underlay_pool: 100.64.48.0/24
+  p2p_links_profiles:
+    default_bb_profile:
+      speed: "forced 10gfull"
+      mtu: 9000
+      isis_hello_padding: true
+      isis_metric: 10
+      #ip_pool: underlay_pool
+      isis_circuit_type: level-2
+      ipv6_enable: true
+      mpls_ip: true
+  p2p_links:
+
+    # P-02 Links
+    - nodes: [ P-02, P-05 ]
+      id: 1
+      interfaces: [ Ethernet3, Ethernet3 ]
+      profile: default_bb_profile
+      ip: [10.2.5.2/24, 10.2.5.5/24]
+    - nodes: [ P-02, PE-01 ]
+      id: 2
+      interfaces: [ Ethernet5, Ethernet1 ]
+      profile: default_bb_profile
+      ip: [10.1.2.2/24, 10.1.2.1/24]
+    - nodes: [ P-02, PE-03 ]
+      id: 3
+      interfaces: [ Ethernet1, Ethernet3 ]
+      profile: default_bb_profile
+      ip: [10.2.3.2/24, 10.2.3.3/24]
+    - nodes: [ P-02, PE-04 ]
+      id: 4
+      interfaces: [ Ethernet2, Ethernet4 ]
+      profile: default_bb_profile
+      ip: [10.2.4.2/24, 10.2.4.4/24]
+  
+    - nodes: [ P-02, PE-06 ]
+      id: 5
+      interfaces: [ Ethernet4, Ethernet5 ]
+      profile: default_bb_profile
+      ip: [10.2.6.2/24, 10.2.6.6/24]
+
+    # P-05 Links
+    - nodes: [ P-05, PE-01 ]
+      id: 6
+      interfaces: [ Ethernet4, Ethernet5]
+      profile: default_bb_profile
+      ip: [10.1.5.5/24, 10.1.5.1/24]
+
+    - nodes: [ P-05, PE-03 ]
+      id: 7
+      interfaces: [ Ethernet2, Ethernet4 ]
+      profile: default_bb_profile
+      ip: [10.3.5.5/24, 10.3.5.3/24]
+    - nodes: [ P-05, PE-04 ]
+      id: 8
+      interfaces: [ Ethernet1, Ethernet3 ]
+      profile: default_bb_profile
+      ip: [10.4.5.5/24, 10.4.5.4/24]
+    - nodes: [ P-05, PE-06 ]
+      id: 9
+      interfaces: [ Ethernet5, Ethernet1]
+      profile: default_bb_profile
+      ip: [10.5.6.5/24, 10.5.6.6/24]
+
+    # PE-01 Links
+    - nodes: [ PE-01, PE-06 ]
+      id: 10
+      interfaces: [ Ethernet4, Ethernet4 ]
+      profile: default_bb_profile
+      ip: [10.1.6.1/24, 10.1.6.6/24]
+    - nodes: [ PE-01, PE-07 ]
+      id: 11
+      interfaces: [ Ethernet2, Ethernet3 ]
+      profile: default_bb_profile
+      ip: [10.1.7.1/24, 10.1.7.7/24]
+
+    # PE-03 Links
+    - nodes: [ PE-03, PE-04 ]
+      id: 12
+      interfaces: [ Ethernet5, Ethernet5 ]
+      profile: default_bb_profile
+      ip: [10.3.4.3/24, 10.3.4.4/24]
+    - nodes: [ PE-03, PE-07 ]
+      id: 13
+      interfaces: [ Ethernet2, Ethernet1 ]
+      profile: default_bb_profile
+      ip: [10.3.7.3/24, 10.3.7.7/24]  
+    # PE-08 Links
+    - nodes: [ PE-08, PE-04 ]
+      id: 14
+      interfaces: [ Ethernet1, Ethernet2 ]
+      profile: default_bb_profile
+      ip: [10.4.8.8/24, 10.4.8.4/24]
+    - nodes: [ PE-8, PE-06 ]
+      id: 15
+      interfaces: [ Ethernet3, Ethernet2 ]
+      profile: default_bb_profile
+      ip: [10.6.8.8/24, 10.6.8.6/24]  
+

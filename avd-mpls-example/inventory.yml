@@ -1,0 +1,92 @@
+---
+all:
+  children:
+    CVP:
+      hosts:
+        cv_server:
+          ansible_httpapi_host: 192.168.0.5
+          ansible_host: 192.168.0.5
+          ansible_user: arista
+          ansible_password: aristagifh
+          ansible_connection: httpapi
+          ansible_httpapi_use_ssl: true
+          ansible_httpapi_validate_certs: false
+          ansible_network_os: eos
+          ansible_httpapi_port: 443
+          # Configuration to get Virtual Env information
+          ansible_python_interpreter: $(which python3)
+
+    MPLS_FABRIC:
+      children:
+        PE_ROUTERS:
+          hosts:
+            PE-01:
+              ansible_host: 192.168.0.10
+            PE-03:
+              ansible_host: 192.168.0.12
+            PE-04:
+              ansible_host: 192.168.0.13
+            PE-06:
+              ansible_host: 192.168.0.15
+            PE-07:
+              ansible_host: 192.168.0.16
+            PE-08:
+              ansible_host: 192.168.0.17
+        RR_ROUTERS:
+          hosts:
+            P-02:
+              ansible_host: 192.168.0.11
+            P-05:
+              ansible_host: 192.168.0.14
+
+    CPE_ROUTERS:
+      children:
+        Customer01:
+          hosts:
+            CPE-11:
+              ansible_host: 192.168.0.20
+            CPE-12:
+              ansible_host: 192.168.0.21
+            CPE-13:
+              ansible_host: 192.168.0.22
+            CPE-15:
+              ansible_host: 192.168.0.24
+        Customer02:
+          hosts:
+            CPE-09:
+              ansible_host: 192.168.0.18
+            CPE-10: 
+              ansible_host: 192.168.0.19
+            CPE-14:
+              ansible_host: 192.168.0.23
+        Customer03:
+          hosts:
+            CPE-16: 
+              ansible_host: 192.168.0.25
+            CPE-17:
+              ansible_host: 192.168.0.26
+        Customer04:
+          hosts:
+            CPE-18:
+              ansible_host: 192.168.0.27
+            CPE-19:
+              ansible_host: 192.168.0.29
+        Centralized:
+          hosts:
+            CPE-20:
+              ansible_host: 192.168.0.30
+            
+
+    VPN_SERVICES:
+      children:
+        PE_ROUTERS:
+
+    MPLS_ENDPOINT_CONNECTIONS:
+      children:
+        PE_ROUTERS:
+
+    EOS:
+      children:
+        PE_ROUTERS:
+        RR_ROUTERS:
+        CPE_ROUTERS:
